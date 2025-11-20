@@ -1,0 +1,13 @@
+import { Module } from '@nestjs/common';
+import { PreferencesService } from './preferences.service';
+import { PreferencesController } from './preferences.controller';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { Preferences } from './preferences.entity';
+
+@Module({
+  imports: [TypeOrmModule.forFeature([Preferences])],
+  controllers: [PreferencesController],
+  providers: [PreferencesService],
+  exports: [PreferencesService],
+})
+export class PreferencesModule {}
