@@ -24,9 +24,8 @@ export class DashboardService {
       };
     }
 
-    const assets = userPrefs.cryptoAssets;
-    const contentTypes = userPrefs.contentTypes;
-
+    const assets = JSON.parse(userPrefs.cryptoAssets);
+    const contentTypes = JSON.parse(userPrefs.contentTypes);
 
     const response: any = {};
 

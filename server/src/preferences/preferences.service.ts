@@ -10,31 +10,19 @@ export class PreferencesService {
     private repo: Repository<Preferences>,
   ) {}
 
-  // -----------------------------
-  // שמירה (אין stringify!)
-  // -----------------------------
   async setPreferences(userId: number, data: any) {
     const existing = await this.repo.findOne({ where: { userId } });
 
-    const toSave = {
-      userId,
-      cryptoAssets: data.cryptoAssets,   // כבר מערך
-      investorType: data.investorType,
-      contentTypes: data.contentTypes,   // כבר מערך
-    };
-
     if (existing) {
-      return this.repo.save({ ...existing, ...toSave });
+      // עדכון העדפות קיימות
+      return this.repo.save({ ...existing, ...data });
     }
 
-    const newPref = this.repo.create(toSave);
+    // יצירת Preferences חדשים
+    const newPref = this.repo.create({ userId, ...data });
     return this.repo.save(newPref);
   }
 
-  // -----------------------------
-  // שליפה — אין JSON.parse!
-  // TypeORM כבר מחזיר arrays
-  // -----------------------------
   async getPreferences(userId: number) {
     return this.repo.findOne({ where: { userId } });
   }

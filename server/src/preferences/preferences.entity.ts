@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn } from 'typeorm';
 import { User } from '../users/user.entity';
 
-@Entity('preferences')   // אפשר להשאיר בלי שם, אבל עדיף לציין
+@Entity()
 export class Preferences {
   @PrimaryGeneratedColumn()
   id: number;
@@ -9,15 +9,14 @@ export class Preferences {
   @Column()
   userId: number;
 
-  // במקום 'text' + JSON string → simple-array שומר אוטומטית מערך!
-  @Column('simple-array')
-  cryptoAssets: string[];   // למשל: ["BTC","ETH","SOL"]
+  @Column('text')
+  cryptoAssets: string; // JSON string: ["BTC","ETH"]
 
   @Column()
-  investorType: string;     // למשל: "HODLer"
+  investorType: string; // HODLer / DayTrader / NFTCollector
 
-  @Column('simple-array')
-  contentTypes: string[];   // למשל: ["Prices","News","Fun","AI"]
+  @Column('text')
+  contentTypes: string; // JSON string: ["News","Charts"]
 
   @OneToOne(() => User)
   @JoinColumn({ name: 'userId' })
