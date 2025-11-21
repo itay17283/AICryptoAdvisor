@@ -20,10 +20,12 @@ export class PreferencesController {
     });
   }
 
-  @UseGuards(JwtAuthGuard)
-  @Get('me')
-  getMyPreferences(@Req() req: any) {
-    const userId = req.user.userId;
-    return this.preferencesService.getPreferences(userId);
-  }
+  // @UseGuards(JwtAuthGuard)
+  // @Get('me')
+  // getMyPreferences(@Req() req: any) {
+  //   const userId = req.user.userId;
+  //   return this.preferencesService.getPreferences(userId);
+  // }
+  
+
 }

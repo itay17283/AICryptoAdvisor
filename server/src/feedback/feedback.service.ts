@@ -9,8 +9,22 @@ export class FeedbackService {
     @InjectRepository(Feedback)
     private repo: Repository<Feedback>,
   ) {}
-
+  
   async addFeedback(userId: number, section: string, vote: number) {
+    const existing = await this.repo.findOne({
+      where: { userId, section },
+    });
+
+    if (existing) {
+      if (existing.vote === vote) {
+        return existing; // אין שינוי
+      }
+
+  
+      existing.vote = vote;
+      return this.repo.save(existing);
+    }
+
     const fb = this.repo.create({
       userId,
       section,

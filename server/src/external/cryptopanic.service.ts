@@ -8,7 +8,6 @@ export class CryptoPanicService {
 
   constructor(private config: ConfigService) {
     this.token = this.config.get<string>('CRYPTOPANIC_TOKEN') ?? '';
-    console.log("Loaded CryptoPanic token:", this.token);
   }
 
   async getNews() {
