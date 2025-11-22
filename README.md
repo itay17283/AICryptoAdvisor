@@ -8,7 +8,7 @@ https://ai-crypto-advisor-pi.vercel.app/
 - **Frontend:** React + Javascript  
 - **Backend:** NestJS + TypeScript  
 - **Database:** PostgreSQL  
-- **Deployment:**  
+- **Deployment:** Frontend with Vercel, Backend + DB with Render
 
 ## How to Run the Project Locally:
 ### Clone the repository
@@ -32,23 +32,18 @@ The backend will run locally at: http://localhost:3000
   
 The frontend will run locally at: http://localhost:3001  
 
-important: if you want to use the API'S services for the "Lastest News" and for the "AI Market Insight" you should do the next steps:  
-1. Create file with the name ".env" and put it in /AICryptoAdvisor/server  
-2. Get API keys from the websites: CryptoPanic (news) and OpenRouter (AI insights)  
-3. Enter these 2 fields in the ".env" file:  
-   CRYPTOPANIC_TOKEN=*put your API key here*  
-   OPENROUTER_API_KEY=*put your API key here*  
 ## Postgresql database  
 - **Database name:** `AICryptoAdvisor`
 - **Username:** `postgres`
 - **Password:** `1234`  
 
 ## API Endpoints Overview  
-When working locally, use:  
-`http://localhost:3000/`
 
-All endpoints are available under the base URL:  
-`https://AICryptoAdvisor.chan.net`
+All endpoints are available under the base URL:   
+`https://aicryptoadvisor-backend.onrender.com/`  
+
+When working locally, use:   
+`http://localhost:3000/`  
 
 ### Auth Endpoints (/auth)
 - `POST /auth/signup`  
@@ -81,7 +76,13 @@ All endpoints are available under the base URL:
 - `GET /feedback/:section`    
   Get feedbacks by section.  
 
-  
+## API important note:
+if you want to use the API'S services for the "Lastest News" and for the "AI Market Insight" you should do the next steps:  
+1. Create file with the name ".env" and put it in /AICryptoAdvisor/server  
+2. Get API keys from the websites: CryptoPanic (news) and OpenRouter (AI insights)  
+3. Enter these 2 fields in the ".env" file:  
+   CRYPTOPANIC_TOKEN=*put your API key here*  
+   OPENROUTER_API_KEY=*put your API key here*  
 
 
 
