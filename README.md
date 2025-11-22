@@ -16,6 +16,7 @@ cd AICryptoAdvisor
 
 #Run the Backend  
 cd server  
+npm install
 npm run start:dev  
 
 #Run the Frontend  
@@ -27,6 +28,10 @@ The backend will run locally at: http://localhost:3000
 The frontend will run locally at: http://localhost:3001  
 
 
-## How to Run the Project Locally:
+## Postgresql database  
+- **Database name:** 'AICryptoAdvisor'
+- **Username:** 'postgres'
+- **Password:** '1234'
+
 
 
