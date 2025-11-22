@@ -11,7 +11,7 @@ Git repository link: https://github.com/itay17283/AICryptoAdvisor.git
 
 ## How to Run the Project Locally:
 ### Clone the repository
-git clone https://github.com/itay17283/AICryptoAdvisor.git
+git clone https://github.com/itay17283/AICryptoAdvisor.git  
 cd AICryptoAdvisor 
 
 #Run the Backend
