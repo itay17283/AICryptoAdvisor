@@ -8,7 +8,7 @@ https://ai-crypto-advisor-pi.vercel.app/
 - **Frontend:** React + Javascript  
 - **Backend:** NestJS + TypeScript  
 - **Database:** PostgreSQL  
-- **Deployment:** Fronted with Vercel, Backend + DB with Render
+- **Deployment:** Frontend with Vercel, Backend + DB with Render
 
 ## How to Run the Project Locally:
 ### Clone the repository
