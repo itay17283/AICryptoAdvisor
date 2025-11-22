@@ -22,4 +22,9 @@ export class UsersService {
   async findById(id: number) {
     return this.repo.findOne({ where: { id } });
   }
+
+  async findAll() {
+    return this.repo.find();
+  }
 }
+

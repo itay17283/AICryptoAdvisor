@@ -15,7 +15,6 @@ export class AuthService {
   async signup(dto: SignupDto) {
     const { name, email, password } = dto;
 
-    // בדיקת כפילות מייל
     const existing = await this.usersService.findByEmail(email);
     if (existing) {
       throw new UnauthorizedException('Email already in use');

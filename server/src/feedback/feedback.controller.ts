@@ -15,6 +15,18 @@ export class FeedbackController {
     return this.feedbackService.addFeedback(userId, section, vote);
   }
 
+  @Get()
+  getAllFeedback() {
+    return this.feedbackService.findAll();
+  }
+
+
+  @Get('userId/:id')
+  getFeedbackByUserId(@Param('id') id: string) {
+    return this.feedbackService.findByUserId(Number(id));
+  }
+
+
   @Get(':section')
   async getFeedback(@Param('section') section: string) {
     return this.feedbackService.getFeedbackSummary(section);

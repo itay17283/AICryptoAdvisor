@@ -1,4 +1,4 @@
-import { Controller, Post, Get, Body, UseGuards, Req } from '@nestjs/common';
+import { Controller, Post, Get, Body, UseGuards, Req, Param } from '@nestjs/common';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { PreferencesService } from './preferences.service';
 
@@ -20,12 +20,22 @@ export class PreferencesController {
     });
   }
 
-  // @UseGuards(JwtAuthGuard)
-  // @Get('me')
-  // getMyPreferences(@Req() req: any) {
-  //   const userId = req.user.userId;
-  //   return this.preferencesService.getPreferences(userId);
-  // }
+  @Get()
+  getAllPreferences() {
+    return this.preferencesService.findAll();
+  }
+
+  @Get('userId/:id')
+  getPreferencesByUserId(@Param('id') id: string) {
+    return this.preferencesService.findByUserId(Number(id));
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get('me')
+  getMyPreferences(@Req() req: any) {
+    const userId = req.user.userId;
+    return this.preferencesService.getPreferences(userId);
+  }
   
 
 }

@@ -47,4 +47,16 @@ export class FeedbackService {
       total: all.length,
     };
   }
+
+  async findAll() {
+    return this.repo.find();
+  }
+
+  async findByUserId(userId: number) {
+  return this.repo.find({
+    where: { userId },
+  });
+}
+
+
 }

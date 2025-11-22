@@ -23,6 +23,14 @@ export class PreferencesService {
     return this.repo.save(newPref);
   }
 
+  async findByUserId(userId: number) {
+    return this.repo.findOne({ where: { userId } });
+  }
+
+  async findAll() {
+    return this.repo.find();
+  }
+
   async getPreferences(userId: number) {
     return this.repo.findOne({ where: { userId } });
   }
