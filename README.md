@@ -76,7 +76,7 @@ When working locally, use:
 - `GET /feedback/:section`    
   Get feedbacks by section.  
 
-## API- important note:
+## API important note:
 if you want to use the API'S services for the "Lastest News" and for the "AI Market Insight" you should do the next steps:  
 1. Create file with the name ".env" and put it in /AICryptoAdvisor/server  
 2. Get API keys from the websites: CryptoPanic (news) and OpenRouter (AI insights)  
