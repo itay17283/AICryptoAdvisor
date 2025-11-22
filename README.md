@@ -1,2 +1,2 @@
-#AICryptoAdvisor#
+#AICryptoAdvisor
 Git repository link: 
