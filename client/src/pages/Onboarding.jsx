@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
+import api from "../api/axios";
 
 export default function Onboarding() {
   const navigate = useNavigate();
@@ -46,30 +47,23 @@ export default function Onboarding() {
     }
 
     try {
-      const res = await fetch("/preferences", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + token,
-        },
-        body: JSON.stringify({
+      const res = await api.post(
+        "/preferences",
+        {
           cryptoAssets,
           investorType,
           contentTypes,
-        }),
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        setError(data.message || "Error saving preferences");
-        setLoading(false);
-        return;
-      }
+        },
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
+      );
 
       navigate("/dashboard");
     } catch (err) {
-      setError("Server error");
+      setError(err.response?.data?.message || "Error saving preferences");
       console.log(err);
     }
 
@@ -78,7 +72,6 @@ export default function Onboarding() {
 
   return (
     <>
-      
       <button className="logout-btn" onClick={handleLogout}>
         Logout
       </button>

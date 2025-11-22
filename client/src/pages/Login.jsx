@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import api from "../api/axios";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -22,27 +23,14 @@ export default function Login() {
     setError("");
 
     try {
-      const res = await fetch("/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
+      const res = await api.post("/auth/login", form);
 
-      const data = await res.json();
-
-      if (!res.ok) {
-        setError(data.message || "Login failed");
-        setLoading(false);
-        return;
-      }
-
-      //save token
-      localStorage.setItem("token", data.access_token);
+      // Save token
+      localStorage.setItem("token", res.data.access_token);
 
       navigate("/preferences");
-
     } catch (err) {
-      setError("Server error");
+      setError(err.response?.data?.message || "Server error");
     }
 
     setLoading(false);

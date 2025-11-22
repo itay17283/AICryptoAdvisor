@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
+import api from "../api/axios";
 
 export default function Dashboard() {
   const [data, setData] = useState(null);
@@ -24,26 +25,19 @@ export default function Dashboard() {
     navigate("/");
   }
 
+  // LOAD DASHBOARD DATA
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await fetch("/dashboard", {
+        const res = await api.get("/dashboard", {
           headers: {
             Authorization: "Bearer " + token,
           },
         });
 
-        const json = await res.json();
-
-        if (!res.ok) {
-          setError(json.message || "Error loading dashboard");
-          setLoading(false);
-          return;
-        }
-
-        setData(json);
+        setData(res.data);
       } catch (err) {
-        setError("Server error");
+        setError(err.response?.data?.message || "Error loading dashboard");
       }
 
       setLoading(false);
@@ -52,28 +46,26 @@ export default function Dashboard() {
     fetchData();
   }, [token]);
 
+  // FEEDBACK (VOTES)
   async function handleVote(section, voteValue) {
     if (!token) {
       setError("You must be logged in to vote");
       return;
     }
 
-    if (votes[section] === voteValue) {
-      return;
-    }
+    // If user clicked same vote again → do nothing
+    if (votes[section] === voteValue) return;
 
     try {
-      await fetch("/feedback", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + token,
-        },
-        body: JSON.stringify({
-          section,
-          vote: voteValue,
-        }),
-      });
+      await api.post(
+        "/feedback",
+        { section, vote: voteValue },
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
+      );
 
       setVotes((prev) => ({
         ...prev,
@@ -94,7 +86,6 @@ export default function Dashboard() {
 
   return (
     <>
-      
       <button className="logout-btn" onClick={handleLogout}>
         Logout
       </button>
@@ -247,7 +238,6 @@ export default function Dashboard() {
       </div>
 
       <style>{`
-       
         .logout-btn {
           position: fixed;
           top: 20px;
