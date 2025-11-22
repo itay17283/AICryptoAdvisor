@@ -1,10 +1,27 @@
 # AICryptoAdvisor
-Git repository link: https://github.com/itay17283/AICryptoAdvisor
-## URL:
-
-
+Git repository link: https://github.com/itay17283/AICryptoAdvisor.git
+## URL:  
+  
+  
 ## Tech Stack
 **Frontend:** React + TypeScript  
 **Backend:** NestJS + TypeScript  
 **Database:** PostgreSQL  
-**Deployment:**   
+**Deployment:**  
+
+## How to Run the Project Locally:
+### Clone the repository
+git clone https://github.com/itay17283/AICryptoAdvisor.git
+cd AICryptoAdvisor 
+
+#Run the Backend
+npm start run:dev
+
+#Run the Frontend
+cd client
+npm start
+
+The backend will run locally at: http://localhost:3000  
+The frontend will run locally at: http://localhost:3001  
+
+
