@@ -44,11 +44,12 @@ The frontend will run locally at: http://localhost:3001
 - **Password:** `1234`  
 
 ## API Endpoints Overview  
-When working locally, use:  
-`http://localhost:3000/`
 
-All endpoints are available under the base URL:  
-`https://AICryptoAdvisor.chan.net`
+All endpoints are available under the base URL:   
+`https://aicryptoadvisor-backend.onrender.com/`  
+
+When working locally, use:   
+`http://localhost:3000/`  
 
 ### Auth Endpoints (/auth)
 - `POST /auth/signup`  
