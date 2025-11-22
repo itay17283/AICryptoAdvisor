@@ -14,14 +14,16 @@ Git repository link: https://github.com/itay17283/AICryptoAdvisor.git
 git clone https://github.com/itay17283/AICryptoAdvisor.git  
 cd AICryptoAdvisor 
 
-#Run the Backend
-npm start run:dev
+#Run the Backend  
+cd server  
+npm start run:dev  
 
-#Run the Frontend
-cd client
-npm start
+#Run the Frontend  
+cd client  
+npm start  
 
-The backend will run locally at: http://localhost:3000  
+The backend will run locally at: http://localhost:3000
+  
 The frontend will run locally at: http://localhost:3001  
 
 
