@@ -16,7 +16,7 @@ cd AICryptoAdvisor
 
 #Run the Backend  
 cd server  
-npm start run:dev  
+npm run start:dev  
 
 #Run the Frontend  
 cd client  
@@ -25,5 +25,8 @@ npm start
 The backend will run locally at: http://localhost:3000
   
 The frontend will run locally at: http://localhost:3001  
+
+
+## How to Run the Project Locally:
 
 
