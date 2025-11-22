@@ -15,7 +15,6 @@ export default function Home() {
             Welcome to <br /> AI Crypto Advisor
           </h1>
 
-
           <button
             className="home-button"
             onClick={() => navigate("/signup")}
@@ -71,7 +70,7 @@ export default function Home() {
           box-shadow: 0 4px 15px rgba(0,0,0,0.1);
           text-align: center;
           box-sizing: border-box;
-          z-index: 10; /* שיהיה מעל ה-GIF */
+          z-index: 10; 
         }
 
         .home-title {
@@ -110,6 +109,32 @@ export default function Home() {
 
         .home-link:hover {
           color: #1e40af;
+        }
+
+        /* 📱 Responsive fix for small screens */
+        @media (max-width: 600px) {
+          .btc-gif {
+            width: 90px;
+            height: 90px;
+            top: 50%;
+          }
+
+          .btc-gif.left {
+            left: 2%;
+          }
+
+          .btc-gif.right {
+            right: 2%;
+          }
+
+          .home-card {
+            max-width: 300px;
+            padding: 22px 18px;
+          }
+
+          .home-title {
+            font-size: 1.6rem;
+          }
         }
       `}</style>
     </>
