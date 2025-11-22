@@ -37,7 +37,6 @@ export default function Signup() {
         return;
       }
 
-      // אחרי הרשמה — נעבור למסך הבית
       navigate("/");
 
     } catch (err) {

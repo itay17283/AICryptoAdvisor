@@ -17,7 +17,7 @@ export class FeedbackService {
 
     if (existing) {
       if (existing.vote === vote) {
-        return existing; // אין שינוי
+        return existing;
       }
 
   

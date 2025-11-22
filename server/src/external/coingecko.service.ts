@@ -4,6 +4,8 @@ import axios from 'axios';
 @Injectable()
 export class CoinGeckoService {
   async getPrices(assets: string[]) {
+
+    //mapping 3 crypto coins
     try {
       const map = {
         BTC: 'bitcoin',

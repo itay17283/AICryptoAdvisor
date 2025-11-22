@@ -5,8 +5,7 @@ import { ConfigService } from '@nestjs/config';
 @Injectable()
 export class AIService {
   private readonly apiKey: string;
-
-  // Cache משתנים פנימיים:
+  
   private cachedInsight: string | null = null;
   private cachedAt: number | null = null;
 
@@ -15,15 +14,15 @@ export class AIService {
   }
 
   async getInsight(prompt: string): Promise<string> {
-    //return "AI API not available — using fallback insight.";
+    //cashe available for one day
     const ONE_DAY = 24 * 60 * 60 * 1000;
 
-    // 1️⃣ אם יש cache פחות מיום — נחזיר אותו
+    // if there is cashe- return it 
     if (this.cachedInsight && this.cachedAt && (Date.now() - this.cachedAt < ONE_DAY)) {
       return this.cachedInsight;
     }
 
-    // 2️⃣ אם אין cache — נקרא ל-OpenRouter
+    //if there is no cache- call for OpenRouter
     try {
       const url = 'https://openrouter.ai/api/v1/chat/completions';
 
@@ -46,7 +45,7 @@ export class AIService {
 
       const insight = res.data.choices?.[0]?.message?.content ?? "AI error: no content";
 
-      // 3️⃣ שמירת cache
+      //save cache
       this.cachedInsight = insight;
       this.cachedAt = Date.now();
 

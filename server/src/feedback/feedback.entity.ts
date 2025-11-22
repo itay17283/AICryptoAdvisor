@@ -10,10 +10,10 @@ export class Feedback {
   userId: number;
 
   @Column()
-  section: string; // 'news' | 'prices' | 'ai' | 'meme'
+  section: string; 
 
   @Column()
-  vote: number; // +1 / -1
+  vote: number; 
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   createdAt: Date;

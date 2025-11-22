@@ -36,10 +36,9 @@ export default function Login() {
         return;
       }
 
-      // הצלה של הטוקן לזיכרון – לקראת קריאות API בהמשך
+      //save token
       localStorage.setItem("token", data.access_token);
 
-      // מעבר לעמוד Preferences (או ל-Dashboard, מה שתחליט)
       navigate("/preferences");
 
     } catch (err) {

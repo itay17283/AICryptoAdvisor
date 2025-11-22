@@ -9,8 +9,8 @@ import { JwtStrategy } from './strategies/jwt.strategy';
   imports: [
     UsersModule,
     JwtModule.register({
-      secret: 'JWT_SECRET',               // בהמשך נעביר ל־ENV
-      signOptions: { expiresIn: '7d' }, // זמן תוקף לטוקן
+      secret: 'JWT_SECRET',               
+      signOptions: { expiresIn: '7d' }, 
     }),
   ],
   providers: [AuthService, JwtStrategy],

@@ -14,11 +14,9 @@ export class PreferencesService {
     const existing = await this.repo.findOne({ where: { userId } });
 
     if (existing) {
-      // עדכון העדפות קיימות
       return this.repo.save({ ...existing, ...data });
     }
 
-    // יצירת Preferences חדשים
     const newPref = this.repo.create({ userId, ...data });
     return this.repo.save(newPref);
   }

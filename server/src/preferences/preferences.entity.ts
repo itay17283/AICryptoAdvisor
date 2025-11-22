@@ -10,13 +10,13 @@ export class Preferences {
   userId: number;
 
   @Column('text')
-  cryptoAssets: string; // JSON string: ["BTC","ETH"]
+  cryptoAssets: string; 
 
   @Column()
-  investorType: string; // HODLer / DayTrader / NFTCollector
+  investorType: string; 
 
   @Column('text')
-  contentTypes: string; // JSON string: ["News","Charts"]
+  contentTypes: string; 
 
   @OneToOne(() => User)
   @JoinColumn({ name: 'userId' })

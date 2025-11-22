@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../hooks/useAuth";
 
 export default function Dashboard() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  // 0 = no vote, 1 = like, -1 = dislike
   const [votes, setVotes] = useState({
     prices: 0,
     news: 0,
@@ -14,7 +15,14 @@ export default function Dashboard() {
   });
 
   const token = localStorage.getItem("token");
-  
+
+  const { logout } = useAuth();
+  const navigate = useNavigate();
+
+  function handleLogout() {
+    logout();
+    navigate("/");
+  }
 
   useEffect(() => {
     async function fetchData() {
@@ -50,7 +58,6 @@ export default function Dashboard() {
       return;
     }
 
-    // אם לוחצים שוב על אותה הצבעה – לא עושים כלום
     if (votes[section] === voteValue) {
       return;
     }
@@ -63,8 +70,8 @@ export default function Dashboard() {
           Authorization: "Bearer " + token,
         },
         body: JSON.stringify({
-          section,            // 'prices' | 'news' | 'ai' | 'meme'
-          vote: voteValue,    // 1 or -1
+          section,
+          vote: voteValue,
         }),
       });
 
@@ -87,6 +94,11 @@ export default function Dashboard() {
 
   return (
     <>
+      
+      <button className="logout-btn" onClick={handleLogout}>
+        Logout
+      </button>
+
       <div className="dash-container">
         <h1 className="dash-title">Your Personalized Crypto Dashboard</h1>
 
@@ -97,8 +109,8 @@ export default function Dashboard() {
               <h2 className="dash-subtitle">Crypto Prices</h2>
               {Object.keys(data.prices).map((coin) => (
                 <p key={coin} className="dash-item">
-                  <strong>{coin.toUpperCase()}:</strong>{" "}
-                  ${data.prices[coin].usd}
+                  <strong>{coin.toUpperCase()}:</strong> $
+                  {data.prices[coin].usd}
                 </p>
               ))}
 
@@ -194,11 +206,7 @@ export default function Dashboard() {
               <h2 className="dash-subtitle">Crypto Meme of the Day</h2>
 
               {typeof data.meme === "string" ? (
-                <img
-                  src={data.meme}
-                  alt="meme"
-                  className="dash-meme"
-                />
+                <img src={data.meme} alt="meme" className="dash-meme" />
               ) : (
                 <>
                   <p className="dash-item">
@@ -239,6 +247,26 @@ export default function Dashboard() {
       </div>
 
       <style>{`
+       
+        .logout-btn {
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          background: #dc2626;
+          color: white;
+          border: none;
+          padding: 10px 16px;
+          border-radius: 8px;
+          cursor: pointer;
+          font-size: 0.95rem;
+          z-index: 9999;
+          transition: 0.2s;
+        }
+
+        .logout-btn:hover {
+          background: #b91c1c;
+        }
+
         .dash-container {
           padding: 20px;
           max-width: 900px;

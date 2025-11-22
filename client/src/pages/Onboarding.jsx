@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../hooks/useAuth";
 
 export default function Onboarding() {
   const navigate = useNavigate();
+  const { logout } = useAuth();
 
   const [cryptoAssets, setCryptoAssets] = useState([]);
   const [investorType, setInvestorType] = useState("");
@@ -12,18 +14,18 @@ export default function Onboarding() {
 
   const token = localStorage.getItem("token");
   if (!token) {
-    return (
-      <div>
-        Unauthorized
-      </div>
-    );
+    return <div>Unauthorized</div>;
   }
-  // רשימת אפשרויות
+
+  function handleLogout() {
+    logout();
+    navigate("/");
+  }
+
   const coins = ["BTC", "ETH", "SOL"];
   const investorOptions = ["HODLer", "DayTrader", "NFTCollector"];
   const contentOptions = ["Prices", "News", "Fun", "AI"];
 
-  // בחירה מרובה: צ'קבוקסים
   function toggleArrayItem(value, currentArray, setter) {
     if (currentArray.includes(value)) {
       setter(currentArray.filter((v) => v !== value));
@@ -65,9 +67,7 @@ export default function Onboarding() {
         return;
       }
 
-      // לאחר שמירה — נעבור לדשבורד
       navigate("/dashboard");
-
     } catch (err) {
       setError("Server error");
       console.log(err);
@@ -78,6 +78,11 @@ export default function Onboarding() {
 
   return (
     <>
+      
+      <button className="logout-btn" onClick={handleLogout}>
+        Logout
+      </button>
+
       <div className="onb-container">
         <div className="onb-card">
           <h1 className="onb-title">
@@ -85,7 +90,6 @@ export default function Onboarding() {
           </h1>
 
           <form onSubmit={handleSubmit} className="onb-form">
-
             {/* CRYPTO ASSETS */}
             <div className="onb-section">
               <h2 className="onb-subtitle">1. Which crypto assets interest you?</h2>
@@ -107,7 +111,7 @@ export default function Onboarding() {
             {/* INVESTOR TYPE */}
             <div className="onb-section">
               <h2 className="onb-subtitle">2. What type of investor are you?</h2>
-              
+
               {investorOptions.map((type) => (
                 <label key={type} className="onb-radio-row">
                   <input
@@ -145,17 +149,16 @@ export default function Onboarding() {
             <button type="submit" className="onb-button" disabled={loading}>
               {loading ? "Saving..." : "Save Preferences"}
             </button>
-
           </form>
         </div>
       </div>
 
       <style>{`
         .onb-container {
-          height: 100vh;
+          min-height: 100vh;
           display: flex;
           justify-content: center;
-          align-items: center;
+          align-items: flex-start;
           padding: 28px;
         }
 
@@ -167,6 +170,25 @@ export default function Onboarding() {
           border-radius: 12px;
           box-shadow: 0 4px 15px rgba(0,0,0,0.1);
           box-sizing: border-box;
+        }
+
+        .logout-btn {
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          background: #dc2626;
+          color: white;
+          border: none;
+          padding: 10px 16px;
+          border-radius: 8px;
+          cursor: pointer;
+          font-size: 0.95rem;
+          z-index: 9999;
+          transition: 0.2s;
+        }
+
+        .logout-btn:hover {
+          background: #b91c1c;
         }
 
         .onb-title {
