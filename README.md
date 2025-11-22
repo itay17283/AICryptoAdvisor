@@ -1,2 +1,2 @@
 # AICryptoAdvisor
-Git repository link: 
+Git repository link: https://github.com/itay17283/AICryptoAdvisor
