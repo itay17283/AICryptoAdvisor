@@ -18,11 +18,12 @@ cd AICryptoAdvisor
 #Run the Backend  
 cd server  
 npm install  
-*make sure that you downloaded to your computer pgadmin 4 and posrgreSQL*
+*make sure that you downloaded to your computer pgadmin4 and posrgreSQL*
 npm run start:dev  
 
 #Run the Frontend  
-cd client  
+cd client
+npm install  
 npm start  
 ```
 
@@ -30,7 +31,12 @@ The backend will run locally at: http://localhost:3000
   
 The frontend will run locally at: http://localhost:3001  
 
-
+important: if you want to use the API'S services for the "Lastest News" and for the "AI Market Insight" you should do the next steps:  
+1. Create file with the name ".env" and put it in /AICryptoAdvisor/server  
+2. Get API keys from the websites: CryptoPanic (news) and OpenRouter (AI insights)  
+3. Enter these 2 fields in the ".env" file:  
+   CRYPTOPANIC_TOKEN=*put your API key here*  
+   OPENROUTER_API_KEY=*put your API key here*  
 ## Postgresql database  
 - **Database name:** `AICryptoAdvisor`
 - **Username:** `postgres`
