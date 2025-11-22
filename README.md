@@ -11,7 +11,7 @@ Git repository link: https://github.com/itay17283/AICryptoAdvisor.git
 
 ## How to Run the Project Locally:
 ### Clone the repository
-`
+```bash
 git clone https://github.com/itay17283/AICryptoAdvisor.git  
 cd AICryptoAdvisor 
 
@@ -23,7 +23,7 @@ npm run start:dev
 #Run the Frontend  
 cd client  
 npm start  
-`
+```
 
 The backend will run locally at: http://localhost:3000
   
