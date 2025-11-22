@@ -29,9 +29,9 @@ The frontend will run locally at: http://localhost:3001
 
 
 ## Postgresql database  
-- **Database name:** 'AICryptoAdvisor'
-- **Username:** 'postgres'
-- **Password:** '1234'
+- **Database name:** `AICryptoAdvisor`
+- **Username:** `postgres`
+- **Password:** `1234`
 
 
 
