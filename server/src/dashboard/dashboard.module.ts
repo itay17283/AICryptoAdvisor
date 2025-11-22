@@ -10,7 +10,7 @@ import { MemesService } from '../external/memes.service';
 import { PreferencesModule } from '../preferences/preferences.module';
 
 @Module({
-  imports: [PreferencesModule],   // ← חובה!
+  imports: [PreferencesModule],
   controllers: [DashboardController],
   providers: [
     DashboardService,

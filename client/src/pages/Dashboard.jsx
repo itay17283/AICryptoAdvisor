@@ -25,7 +25,7 @@ export default function Dashboard() {
     navigate("/");
   }
 
-  // LOAD DASHBOARD DATA
+  //load the data to dashboard
   useEffect(() => {
     async function fetchData() {
       try {
@@ -46,14 +46,12 @@ export default function Dashboard() {
     fetchData();
   }, [token]);
 
-  // FEEDBACK (VOTES)
   async function handleVote(section, voteValue) {
     if (!token) {
       setError("You must be logged in to vote");
       return;
     }
 
-    // If user clicked same vote again → do nothing
     if (votes[section] === voteValue) return;
 
     try {

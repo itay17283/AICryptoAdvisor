@@ -6,9 +6,9 @@ async function bootstrap() {
 
   app.enableCors({
     origin: [
-      'http://localhost:3000',       // פיתוח בפרונט
-      'http://localhost:3001',       // פיתוח נוסף אם צריך
-      'https://ai-crypto-advisor-pi.vercel.app',  // Front Production
+      'http://localhost:3000',
+      'http://localhost:3001',    
+      'https://ai-crypto-advisor-pi.vercel.app',
     ],
     methods: 'GET,POST,PUT,PATCH,DELETE,OPTIONS',
     credentials: true,
