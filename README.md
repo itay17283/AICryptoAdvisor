@@ -45,18 +45,26 @@ important: if you want to use the API'S services for the "Lastest News" and for 
 ## API Endpoints Overview  
 All endpoints are available under the base URL:  
 
-When working locally, use:
+When working locally, use:  
 `http://localhost:3000/`
 
-All endpoints are available under the base URL:
+All endpoints are available under the base URL:  
 `https://AICryptoAdvisor.chan.net`
 
-# Auth Endpoints (/auth)
+### Auth Endpoints (/auth)
 - `POST /auth/signup`  
   sign up with full name, email and password. Returns userId, name and email.  
 
 - `POST /auth/login`  
-  Log in with username and password. Returns a JWT token.  
+  Log in with username and password. Returns a JWT token.
+
+### User Endpoints (/users)
+- `GET /users`  
+  Retrieve all users 
+
+- `GET /users/id/:id`  
+  Get a specific user by his id
+  
 
 
 
