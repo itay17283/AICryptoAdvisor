@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import api from "../api/axios";
 
 export default function Signup() {
   const navigate = useNavigate();
@@ -23,24 +24,11 @@ export default function Signup() {
     setError("");
 
     try {
-      const res = await fetch("/auth/signup", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        setError(data.message || "Signup failed");
-        setLoading(false);
-        return;
-      }
+      const res = await api.post("/auth/signup", form);
 
       navigate("/");
-
     } catch (err) {
-      setError("Server error");
+      setError(err.response?.data?.message || "Server error");
     }
 
     setLoading(false);
@@ -164,7 +152,6 @@ export default function Signup() {
           color: #dc2626;
           font-size: 0.95rem;
         }
-
       `}</style>
     </>
   );
