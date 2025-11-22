@@ -43,8 +43,6 @@ important: if you want to use the API'S services for the "Lastest News" and for 
 - **Password:** `1234`  
 
 ## API Endpoints Overview  
-All endpoints are available under the base URL:  
-
 When working locally, use:  
 `http://localhost:3000/`
 
