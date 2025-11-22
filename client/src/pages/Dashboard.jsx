@@ -27,7 +27,7 @@ export default function Dashboard() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await fetch("http://localhost:3000/dashboard", {
+        const res = await fetch("/dashboard", {
           headers: {
             Authorization: "Bearer " + token,
           },
@@ -63,7 +63,7 @@ export default function Dashboard() {
     }
 
     try {
-      await fetch("http://localhost:3000/feedback", {
+      await fetch("/feedback", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

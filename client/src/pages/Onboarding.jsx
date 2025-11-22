@@ -46,7 +46,7 @@ export default function Onboarding() {
     }
 
     try {
-      const res = await fetch("http://localhost:3000/preferences", {
+      const res = await fetch("/preferences", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
