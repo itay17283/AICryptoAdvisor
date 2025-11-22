@@ -4,7 +4,7 @@ Git repository link: https://github.com/itay17283/AICryptoAdvisor.git
   
   
 ## Tech Stack
-- **Frontend:** React + javascript  
+- **Frontend:** React + Javascript  
 - **Backend:** NestJS + TypeScript  
 - **Database:** PostgreSQL  
 - **Deployment:**  
