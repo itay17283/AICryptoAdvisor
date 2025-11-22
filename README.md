@@ -58,27 +58,27 @@ All endpoints are available under the base URL:
 
 ### User Endpoints (/users)
 - `GET /users`  
-  Retrieve all users 
+  Retrieve all users. 
 
 - `GET /users/id/:id`  
-  Get a specific user by his id  
+  Get a specific user by his id.  
 
 ### preferences Endpoints (/preferences)  
 - `GET /preferences`  
-  Retrieve all preferences  
+  Retrieve all preferences.  
 
 - `GET /preferences/userId/:id`  
-  Get a specific preferences by userId  
+  Get a specific preferences by userId.  
 
 ### feedback Endpoints (/feedback)  
 - `GET /feedback`  
-  Retrieve all feedbacks  
+  Retrieve all feedbacks.  
 
 - `GET /feedback/userId/:id`   
-  Get feedbacks by userId  
+  Get feedbacks by userId.  
 
 - `GET /feedback/:section`    
-  Get feedbacks by section  
+  Get feedbacks by section.  
 
   
 
