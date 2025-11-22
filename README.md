@@ -17,7 +17,8 @@ cd AICryptoAdvisor
 
 #Run the Backend  
 cd server  
-npm install
+npm install  
+*make sure that you downloaded to your computer pgadmin 4 and posrgreSQL*
 npm run start:dev  
 
 #Run the Frontend  
@@ -33,7 +34,16 @@ The frontend will run locally at: http://localhost:3001
 ## Postgresql database  
 - **Database name:** `AICryptoAdvisor`
 - **Username:** `postgres`
-- **Password:** `1234`
+- **Password:** `1234`  
+
+## Postgresql database 
+All endpoints are available under the base URL:  
+
+When working locally, use:
+`http://localhost:3000/`
+
+# 
+
 
 
 
